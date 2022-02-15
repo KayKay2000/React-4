@@ -1,5 +1,5 @@
 import './App.css';
-import { Heading, Box } from '@chakra-ui/react';
+import { Heading, Box, Flex } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
 import Home from './Pages/Home';
@@ -9,11 +9,14 @@ import Twoplayer from './Pages/Twoplayer';
 function App( {}) {
   return (
     <div className="page">
-      <Box p={10} bg='black' color="white">
+      <Flex p={10} bg='rgb(51	75	247)	' color="rgb(255	207	0	)" justify="center" direction="column">
         <Heading size='4xl' textAlign="center" ><Link to="/">Connect 4</Link></Heading>
-          <Link to="/singleplayer" >Single Player</Link>
-          <Link to="/2player">2 Player</Link>
-      </Box>
+          <ul className="links">
+            <li><Link to="/singleplayer" >Single Player</Link></li>
+            <li><Link to="/twoplayer">2 Player</Link></li>
+          </ul>
+
+      </Flex>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/singleplayer" element={<Oneplayer />} />
