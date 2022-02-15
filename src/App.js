@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Heading, Box } from '@chakra-ui/react';
+import { Route, Routes } from 'react-router';
+import { Link } from 'react-router-dom';
+import Home from './Pages/Home';
+import Oneplayer from './Pages/Oneplayer';
+import Twoplayer from './Pages/Twoplayer';
 
-function App() {
+function App( {}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+      <Box p={10} bg='black' color="white">
+        <Heading size='4xl' textAlign="center" ><Link to="/">Connect 4</Link></Heading>
+          <Link to="/singleplayer" >Single Player</Link>
+          <Link to="/2player">2 Player</Link>
+      </Box>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/singleplayer" element={<Oneplayer />} />
+        <Route path="/twoplayer" element={<Twoplayer />} />
+      </Routes>
     </div>
+
+    
+      
   );
 }
 
