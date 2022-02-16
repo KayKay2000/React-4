@@ -1,9 +1,7 @@
 import React from 'react'
 
-function reducer() {
-  return (
-    <div>reducer</div>
-  )
+const ConnectReducer = function reducer(state, action){
+    return state
 }
 
-export default reducer
+export default ConnectReducer

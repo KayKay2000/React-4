@@ -13,7 +13,7 @@ function App( {}) {
         <Heading size='4xl' textAlign="center" ><Link to="/">Connect 4</Link></Heading>
           <ul className="links">
             <li><Link to="/singleplayer" >Single Player</Link></li>
-            <li><Link to="/twoplayer">2 Player</Link></li>
+            <li><Link to="/twoplayer">Two Player</Link></li>
           </ul>
 
       </Flex>
