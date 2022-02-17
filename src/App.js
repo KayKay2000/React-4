@@ -10,7 +10,7 @@ function App( {}) {
   return (
     <div className="page">
       <Flex p={10} bg='rgb(51	75	247)	' color="rgb(255	207	0	)" justify="center" direction="column">
-        <Heading size='4xl' textAlign="center" ><Link to="/">Connect 4</Link></Heading>
+        <Heading size='4xl' textAlign="center" justify="center" ><img src="../logo192.png" alt="react logo" width="50px" /><Link to="/">React 4</Link></Heading>
           <ul className="links">
             <li><Link to="/singleplayer" >Single Player</Link></li>
             <li><Link to="/twoplayer">Two Player</Link></li>

@@ -2,26 +2,17 @@ import React from 'react'
 import {Board} from './Board'
 import {Game} from './Game'
 
-export class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null
-    }
-  }
-  
-  render() {
-    // if (!this) return null
-    let color = 'color'
-    if (this.state.value === '1'){color='red'}
-  else if (this.state.value === '2'){color='yellow'}
+export function Square(props){
+  let color = 'color'
+    if (props.value === '1'){color='red'}
+    else if (props.value === '2'){color='yellow'}
   return (
     <div className="square">
-      <div className={color} onClick={() => this.setState({value:'1'})}></div>
-      {/* {this.state.value} */}
+      <div className={color} onClick={props.onClick}>{props.value}</div>
+      
+      {props.value}
       
     </div>
   )
-}
 }
 

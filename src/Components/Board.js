@@ -1,16 +1,33 @@
 import React from 'react';
-import { useReducer } from 'react';
+// import { useReducer } from 'react';
 // import { Row } from './Row';
-import { Button, Text } from '@chakra-ui/react'
+// import { Button, Text } from '@chakra-ui/react'
 import '../App.css'
-import {Square} from './Square';
+import { Square } from './Square';
 
+//change to useState
 class Board extends React.Component {
-    renderSquare(i) { 
-    return <Square value={i}/>;
-}
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(42).fill(null),
+            player1Turn: true
+        }
+    }
+    //action?
+    handleClick(i) {
+        const squares = [...this.state.squares];
+        squares[i] = this.state.player1Turn ? '1' : '2';
+        this.setState({
+            squares: squares,
+            player1Turn: !this.state.player1Turn
+        })
+    }
+    renderSquare(i) {
+        return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
+    }
     render() {
-        const status = 'Next player: 1';
+        const status = 'Next player: ' + (this.state.player1Turn ? '1' : '2');
         return (
             <div>
                 <div className="status">{status}</div>
@@ -70,7 +87,7 @@ class Board extends React.Component {
                 </div>
             </div>
         );
-}
+    }
 }
 
 export default Board
