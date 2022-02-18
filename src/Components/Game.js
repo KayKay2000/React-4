@@ -4,12 +4,10 @@ import Board from './Board'
 function Game() {
   return (
     <div className="game">
-      <div className="game-board">
+      <div className="gameboard">
         <Board />
       </div>
-      <div className="game-info">
-        {/* <div>{status}</div> */}
-        {/* <ol>{todo}</ol> */}
+      <div className="gamestatus">
       </div>
     </div>
   )
