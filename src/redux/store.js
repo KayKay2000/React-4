@@ -6,4 +6,4 @@ import squareReducer from './reducer';
 const store = createStore(squareReducer);
 
 
-export default store
+export default store;

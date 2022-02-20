@@ -1,62 +1,59 @@
-import React from 'react'
-import Oneplayer, { initialState } from '../Pages/Oneplayer'
+import React from 'react';
+import Oneplayer, { initialState } from '../Pages/Oneplayer';
+import { dropSquare, findWinner } from '../gameFunctions';
 
 // for your squares, pass these params in the action:
 // square index
 
-    const squareDefaultState = {
-        // squareDisabled: false,
-        squares: [{square1}, {square2}, {square3}, ...]
-    }
+const boardDefaultState = {
+    winner: null,
+    squares: Array(42).fill({
+        whoClicked: null
+    }),
+    // for 'turn', true means that it is player one's turn. 
+    turn: true,
+    playerOneMoves: [],
+    playerTwoMoves: [],
+    message: `Player 1's Turn!`
+}
 
-    export function setSquareDefaultState(squareDisabled) {
-        return {
-            type: 'Disablesquare',
-            squareDisabled: true
-        }
-    }
-
-    // !state.squares[action.index].squareDisabled 
-
-export function squareReducer(state = squareDefaultState, action) {
-    switch (action.type){
-        case 'DISABLE_SQUARE':
+export default function squareReducer(state = boardDefaultState, action) {
+    switch (action.type) {
+        case 'SQUARE_CLICKED':
+            const newIndex = dropSquare(action.index, state.squares);
+            const newTurn = !state.turn;
+            let newPlayerOneMoves = state.turn ? [...state.playerOneMoves, newIndex] : [...state.playerOneMoves];
+            let newPlayerTwoMoves = state.turn === false ? [...state.playerTwoMoves, newIndex] : [...state.playerTwoMoves];
+            newPlayerOneMoves = newPlayerOneMoves.filter(move => move !== undefined);
+            newPlayerTwoMoves = newPlayerTwoMoves.filter(move => move !== undefined);
+            let newWinner = state.winner;
+            if (findWinner(newPlayerOneMoves, newPlayerTwoMoves)) {
+                newWinner = (findWinner(newPlayerOneMoves, newPlayerTwoMoves))
+            }
             return {
                 ...state,
-                squares: [ ...state.squares ].splice(action.index, 1, { 
-                    ...state.squares[action.index], 
-                    squareDisabled: true
-                })
+                winner: newWinner,
+                squares: [...state.squares.slice(0, newIndex), {
+                    ...state.squares[newIndex],
+                    whoClicked: state.turn ? 1 : 2
+                }, ...state.squares.slice(newIndex + 1)],
+                turn: newTurn,
+                playerOneMoves: newPlayerOneMoves,
+                playerTwoMoves: newPlayerTwoMoves,
+                message: newWinner ?
+                    `Player ${newWinner} Wins!`
+                    :
+                    newTurn ?
+                        `Player 1's Turn!`
+                        :
+                        `Player 2's Turn!`
             }
-            default:
-                return state
+        case 'UPDATE_MESSAGE':
+            return {
+                ...state,
+                message: action.message
+            }
+        default:
+            return state
     }
 }
-
-
-
-export function findMatch(moves, plus) {
-    let win = false;
-    moves.forEach(move => {
-        const match1 = findPlusNumber(move, moves, plus);
-        if (match1) {
-            const match2 = findPlusNumber(match1, moves, plus);
-            if (match2) {
-                const match3 = findPlusNumber(match2, moves, plus);
-                if (match3) {
-                    win = true;
-                }
-            }
-        }
-    })
-    return win;
-}
-
-export function findPlusNumber(coordinate, array, plus) {
-    return array.find(otherCoordinates => otherCoordinates === coordinate + plus);
-}
-
-
-
-
-// export default ConnectReducer

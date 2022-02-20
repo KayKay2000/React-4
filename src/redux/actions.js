@@ -1,6 +1,13 @@
-export const disableSquare = (index) => {
+export const squareClicked = (index) => {
   return {
-    type: 'DISABLE_SQUARE',
+    type: 'SQUARE_CLICKED',
     index
+  }
+}
+
+export const updateMessage = (message) => {
+  return {
+    type: 'UPDATE_MESSAGE',
+    message
   }
 }

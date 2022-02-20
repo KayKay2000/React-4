@@ -25,13 +25,13 @@ li {
   align-items: center;
 }
 
-.whiteCircle, .redCircle, .yellowCircle {
+/* .whiteCircle, .redCircle, .yellowCircle {
   height: 60px;
   width: 60px;
   border-radius: 100px;
-}
+} */
 
-.whiteCircle {
+/* .whiteCircle {
   background-color: white;
 }
 
@@ -43,32 +43,32 @@ li {
 .yellowCircle {
   background-color: yellow;
   transition: background-color 0.5s;
-}
+} */
 
 ol, ul {
   padding-left: 30px;
 }
 
-.board-row:after {
+/* .board-row:after {
   clear: both;
   content: '';
   display:table;
-}
+} */
 .board-row {
   display: flex;
   padding: 0.1%;
 }
-.game {
+/* .game {
   display: flex;
   flex-direction: row;
-}
+} */
 
-.gameCell {
+/* .gameCell {
   height: 90px;
   width: 90px;
   background-color: rgb(255	207	0	);
   cursor: pointer;
-}
+} */
 .color {
   background-color: white;
   height: 80px;
