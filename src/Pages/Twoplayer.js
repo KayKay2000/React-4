@@ -11,7 +11,7 @@ function Twoplayer() {
     <>
       <VStack spacing="3rem">
             <Board />
-        <Button size="lg" colorScheme="red" >New Game</Button>
+        {/* <Button size="lg" colorScheme="red" >New Game</Button> */}
       </VStack>
     </>
   )

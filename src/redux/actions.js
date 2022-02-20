@@ -1,9 +1,6 @@
-import React from 'react'
-
-function actions() {
-  return (
-    <div>actions</div>
-  )
+export const disableSquare = (index) => {
+  return {
+    type: 'DISABLE_SQUARE',
+    index
+  }
 }
-
-export default actions

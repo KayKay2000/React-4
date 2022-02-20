@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStore } from 'redux';
-import Connectreducer from './reducer';
+import squareReducer from './reducer';
 
 
-const store = createStore(Connectreducer);
+const store = createStore(squareReducer);
 
 
 export default store

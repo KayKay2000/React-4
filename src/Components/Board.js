@@ -1,9 +1,10 @@
-import React, {useState }from 'react';
+import React, { useState, } from 'react';
 // import { useReducer } from 'react';
 // import { Row } from './Row';
-// import { Button, Text } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react'
 import '../App.css'
 import { Square } from './Square';
+
 
 //change to useState
 class Board extends React.Component {
@@ -12,19 +13,37 @@ class Board extends React.Component {
         this.state = {
             squares: Array(42).fill(null),
             player1Turn: true,
+            // player1Turn: null,
             whoClicked: null,
             playerOneSquares: [],
-            playerTwoSquares: []
+            playerTwoSquares: [],
+            message: '',
+            clickDisabled: false 
 
         }
     }
     //action?
-    handleClick(i) {
+
+    handleClick1() {
+        this.setState({
+            clickDisabled: false,
+            message: ''
+        })
+    }
+    handleClick2(i) {
+        if (this.state.clickDisabled) return
+        
+        
         const squares = [...this.state.squares];
         squares[i] = this.state.player1Turn ? '1' : '2';
 
         let playerOneSquares = [...this.state.playerOneSquares]
         let playerTwoSquares = [...this.state.playerTwoSquares]
+
+        // if (squares[i] === '1' || '2'){
+        //     this.setState({
+        //         clickDisabled: true
+        // })}
 
         if (squares[i] === '1') {
             playerOneSquares.push(i)
@@ -43,36 +62,37 @@ class Board extends React.Component {
         })
 
     }
-
     
 
-    renderSquare(i, play) {
-        return <Square value={[i]} whoClicked={this.state.squares[i]} onClick={() => this.handleClick(i)} play={play} />;
+
+
+    renderSquare(i) {
+        return <Square value={i} whoClicked={this.state.squares[i]} onClick={() => this.handleClick2(i)} />;
     }
 
 
     render() {
-        function findMatch(moves, plus) {
-            let win = false;
-            moves.forEach(move => {
-                const match1 = findPlusNumber(move, moves, plus);
-                if (match1) {
-                    const match2 = findPlusNumber(match1, moves, plus);
-                    if (match2) {
-                        const match3 = findPlusNumber(match2, moves, plus);
-                        if (match3) {
-                            win = true;
-                        }
-                    }
-                }
-            })
-            return win;
-        }
-        
-        function findPlusNumber(coordinate, array, plus) {
-            return array.find(otherCoordinates => otherCoordinates === coordinate + plus);
-        }
-        
+        // function findMatch(moves, plus) {
+        //     let win = false;
+        //     moves.forEach(move => {
+        //         const match1 = findPlusNumber(move, moves, plus);
+        //         if (match1) {
+        //             const match2 = findPlusNumber(match1, moves, plus);
+        //             if (match2) {
+        //                 const match3 = findPlusNumber(match2, moves, plus);
+        //                 if (match3) {
+        //                     win = true;
+        //                 }
+        //             }
+        //         }
+        //     })
+        //     return win;
+        // }
+
+        // function findPlusNumber(coordinate, array, plus) {
+        //     return array.find(otherCoordinates => otherCoordinates === coordinate + plus);
+        // }
+
         // console.log(findMatch(this.state.playerOneSquares, 7));
         // console.log(findMatch(this.state.playerTwoSquares, 7));
         // console.log(findMatch(this.state.playerOneSquares, -6));
@@ -81,28 +101,97 @@ class Board extends React.Component {
         // console.log(findMatch(this.state.playerTwoSquares, +8));
         // console.log(findMatch(this.state.playerOneSquares, 1));
         // console.log(findMatch(this.state.playerTwoSquares, 1));
-        
-        if(findMatch(this.state.playerOneSquares, 7) === true){
-            console.log('game over')}
-        else if (findMatch(this.state.playerTwoSquares, 7) === true){
-            console.log('game over')}
-        if(findMatch(this.state.playerOneSquares, -6) === true){
-            console.log('game over')}
-        else if (findMatch(this.state.playerTwoSquares, -6) === true){
-            console.log('game over')}
-        if(findMatch(this.state.playerOneSquares, 8) === true){
-            console.log('game over')}
-        else if (findMatch(this.state.playerTwoSquares, 8) === true){
-            console.log('game over')}
-        if(findMatch(this.state.playerOneSquares, 1) === true){
-            console.log('game over')}
-        else if (findMatch(this.state.playerTwoSquares, 1) === true){
-            console.log('game over')}
-        
-        
+
+        if (findMatch(this.state.playerOneSquares, 7) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 1 wins!',
+                clickDisabled: true})
+        }
+        else if (findMatch(this.state.playerTwoSquares, 7) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 2 wins!',
+                clickDisabled: true})
+        }
+        if (findMatch(this.state.playerOneSquares, -6) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 1 wins!',
+                clickDisabled: true})
+        }
+        else if (findMatch(this.state.playerTwoSquares, -6) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 2 wins!',
+                clickDisabled: true})
+        }
+        if (findMatch(this.state.playerOneSquares, 8) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 1 wins!',
+                clickDisabled: true})
+        }
+        else if (findMatch(this.state.playerTwoSquares, 8) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 2 wins!',
+                clickDisabled: true})
+        }
+        if (findMatch(this.state.playerOneSquares, 1) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 1 wins!',
+                clickDisabled: true})
+        }
+        else if (findMatch(this.state.playerTwoSquares, 1) === true) {
+            this.setState({  
+                squares: Array(42).fill(null),
+                player1Turn: true,
+                whoClicked: null,
+                playerOneSquares: [],
+                playerTwoSquares: [],
+                message: 'Player 2 wins!',
+                clickDisabled: true})
+        }    
+
+        // if (this.state.gameOver === true) {
+        //     alert('You won!')
+        // }
 
 
-    //    const [playerOneSquares, setPlayerOneSquares] = useState([])
+
+
+
+        //    const [playerOneSquares, setPlayerOneSquares] = useState([])
         // const connect4Clone = (board) => [
         //     [...board[0]],
         //     [...board[1]],
@@ -122,10 +211,11 @@ class Board extends React.Component {
         // }
 
         const status = 'Next player: ' + (this.state.player1Turn ? '1' : '2');
-        
+
         return (
             <div>
                 <div className="status">{status}</div>
+                <div className="message">{this.state.message}</div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -180,7 +270,9 @@ class Board extends React.Component {
                     {this.renderSquare(40)}
                     {this.renderSquare(41)}
                 </div>
+                <Button size="lg" colorScheme="red" onClick={() => this.handleClick1()} >New Game</Button>
             </div>
+            
         );
     }
 }
