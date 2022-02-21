@@ -10,7 +10,7 @@
 
 li {
   padding: 2%;
-  padding-left: 10%;
+  padding-left: 8%;
   padding-right: 10%
 }
 
@@ -31,50 +31,15 @@ li {
   align-items: center;
 }
 
-/* .whiteCircle, .redCircle, .yellowCircle {
-  height: 60px;
-  width: 60px;
-  border-radius: 100px;
-} */
-
-/* .whiteCircle {
-  background-color: white;
-}
-
-.redCircle {
-  background-color: red;
-  transition: background-color 0.5s;
-}
-
-.yellowCircle {
-  background-color: yellow;
-  transition: background-color 0.5s;
-} */
-
 ol, ul {
   padding-left: 30px;
 }
 
-/* .board-row:after {
-  clear: both;
-  content: '';
-  display:table;
-} */
 .board-row {
   display: flex;
   padding: 0.1%;
 }
-/* .game {
-  display: flex;
-  flex-direction: row;
-} */
 
-/* .gameCell {
-  height: 90px;
-  width: 90px;
-  background-color: rgb(255	207	0	);
-  cursor: pointer;
-} */
 .color {
   background-color: white;
   height: 90px;

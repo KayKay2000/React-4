@@ -6,7 +6,7 @@ function Home() {
     <div className='background'>
       <VStack spacing="3rem">
         <div className='content'>
-          <Heading className='Title'>WELCOME TO REACT 4 </Heading>
+          <Heading className='Title'>WELCOME TO REACT 4! </Heading>
           <h4>Go to the instructions page to learn how to play the game.</h4>
         </div>
       </VStack>
