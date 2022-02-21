@@ -1,20 +1,18 @@
-import React, { useReducer } from 'react'
-import ConnectReducer from '../redux/reducer'
-import { VStack, Button, Text, Heading } from '@chakra-ui/react'
+import React from 'react'
+import { VStack, Heading } from '@chakra-ui/react'
 import Board from '../Components/Board'
-import  Row from '../Components/Row'
+import '../App.css'
 
 
 function Twoplayer() {
 
   return (
-    <>
+    <div className='background'>
       <VStack spacing="3rem">
         <Heading className='Title'>Two Player</Heading>
             <Board />
-        {/* <Button size="lg" colorScheme="red" >New Game</Button> */}
       </VStack>
-    </>
+    </div>
   )
 }
 

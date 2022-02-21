@@ -11,3 +11,10 @@ export const updateMessage = (message) => {
     message
   }
 }
+
+export const newGame = () => {
+  return {
+    type: 'NEW_GAME',
+    
+  }
+}

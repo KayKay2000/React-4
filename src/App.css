@@ -14,10 +14,16 @@ li {
   padding-right: 10%
 }
 
+.background {
+  background-color:  rgb(130	215	247);
+  height:100vw
+}
+
 .square {
-  height: 90px;
-  width: 90px;
-  background-color: #1990ff;
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  color: rgb(130	215	247);
   cursor: pointer;
   margin: 0.1%;
   display: flex;
@@ -71,22 +77,38 @@ ol, ul {
 } */
 .color {
   background-color: white;
+  height: 90px;
+  width: 90px;
+  border-radius: 70%;
+}
+.lightBlue {
+  background-color:rgb(130	215	247);
   height: 80px;
   width: 80px;
   border-radius: 70%;
 }
-.red {
-  background-color:red;
-  height: 80px;
-  width: 80px;
-  border-radius: 70%;
-}
-.yellow {
-  background-color:yellow;
+.darkGray {
+  background-color:rgb(41	44	51);
   height: 80px;
   width: 80px;
   border-radius: 70%;
 }
 .game-info {
   margin-left:20px;
+}
+.content {
+  margin: 10%;
+  text-align: center;
+  color: rgb(41	44	51);
+}
+.instructions {
+  text-align: left;
+  list-style: none;
+  margin-top: 5%;
+  color: rgb(41	44	51);
+}
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
 }

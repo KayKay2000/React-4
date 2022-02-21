@@ -1,16 +1,15 @@
-import React, { useState, } from 'react';
-// import { useReducer } from 'react';
-// import { Row } from './Row';
-import { Button, Text } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import '../App.css'
 import { Square } from './Square';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { newGame } from '../redux/actions';
 
 export default function Board() {
     const { message, winner } = useSelector(state => state);
     const renderSquare = (i) => {
         return <Square value={i} winState={winner} />;
     }
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="message">{message}</div>
@@ -68,7 +67,9 @@ export default function Board() {
                 {renderSquare(40)}
                 {renderSquare(41)}
             </div>
-            <Button size="lg" colorScheme="red" >New Game</Button>
+            <div className='button'>
+            <Button size="lg" colorScheme="red" color="rgb(41 44 51)" variant="outline" onClick={() => dispatch(newGame())}>New Game</Button>
+            </div>
         </div>
 
     );

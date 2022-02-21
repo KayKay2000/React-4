@@ -53,6 +53,19 @@ export default function squareReducer(state = boardDefaultState, action) {
                 ...state,
                 message: action.message
             }
+        case 'NEW_GAME':
+            return {
+                //could have returned default state instead of the whole thing 
+                ...state,
+                winner: null,
+                squares: Array(42).fill({
+                    whoClicked: null
+                }),
+                turn: true,
+                playerOneMoves: [],
+                playerTwoMoves: [],
+                message: `Player 1's Turn!`
+            }
         default:
             return state
     }
