@@ -1,5 +1,3 @@
-import React from 'react';
-import Oneplayer, { initialState } from '../Pages/Oneplayer';
 import { dropSquare, findWinner } from '../gameFunctions';
 
 // for your squares, pass these params in the action:
@@ -55,7 +53,7 @@ export default function squareReducer(state = boardDefaultState, action) {
             }
         case 'NEW_GAME':
             return {
-                //could have returned default state instead of the whole thing 
+                //could have returned 'default state' instead of the whole thing 
                 ...state,
                 winner: null,
                 squares: Array(42).fill({

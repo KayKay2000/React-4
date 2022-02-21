@@ -7,6 +7,7 @@ export function Square(props) {
   const thisSquare = squares[props.value];
   const dispatch = useDispatch();
   const handleSquareClick = () => {
+    // makes sure a square can't be clicked more than once
     if (thisSquare.whoClicked || props.winState) return;
     dispatch(squareClicked(props.value));
   }
