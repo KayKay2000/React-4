@@ -14,7 +14,7 @@ function App() {
         <Heading size='4xl' textAlign="center" justify="center" ><img src="../logo192.png" alt="react logo" width="50px" /><Link to="/">React 4</Link></Heading>
           <ul className="links">
             <li><Link to="/instructions" >Instructions</Link></li>
-            <li><Link to="/single-player" >Single Player</Link></li>
+            {/* <li><Link to="/single-player" >Single Player</Link></li> */}
             <li><Link to="/two-player">Two Player</Link></li>
           </ul>
 
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/instructions" element={<Instructions />} />
-        <Route path="/single-player" element={<Oneplayer />} />
+        {/* <Route path="/single-player" element={<Oneplayer />} /> */}
         <Route path="/two-player" element={<Twoplayer />} />
       </Routes>
     </div>
